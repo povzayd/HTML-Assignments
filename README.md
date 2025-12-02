@@ -6,4 +6,4 @@ Using Bootstrap.[Assignment-2](https://povzayd.github.io/HTML-Assignments/Assign
 - **Assignment 3:**
 Understanding Positioning In CSS. [Assignment-3](https://povzayd.github.io/HTML-Assignments/Assignment-3)
 - **Assignment 4:**
-Basic Use-case of JS. [Assignment-4](https://povzayd.github.io/HTML-Assignments/Assignment-4)
+Basic Use-case of JS. [Assignment-4](https://povzayd.github.io/HTML-Assignments/Assignments-4)
