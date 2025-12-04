@@ -12,4 +12,4 @@ Basic Use-case of JS. [Assignment-4-II](https://povzayd.github.io/HTML-Assignmen
 - **Assignment 4 III:**
 Basic Use-case of JS. [Assignment-4-III](https://povzayd.github.io/HTML-Assignments/Assignments-4/to-do-list.html)
 - **Assignment 4 IV:**
-Basic Use-case of JS. [Assignment-4-III](https://povzayd.github.io/HTML-Assignments/Assignments-4/calculator.html)
+Basic Use-case of JS. [Assignment-4-IV](https://povzayd.github.io/HTML-Assignments/Assignments-4/calculator.html)
