@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do Manager</title>
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #0d0d0f;
+            color: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 40px;
+        }
+
+        h2 {
+            color: #5ca9ff;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #0044ff55;
+        }
+
+        #container {
+            background: #131318;
+            padding: 25px;
+            border-radius: 14px;
+            width: 330px;
+            border: 1px solid #1f1f2d;
+            box-shadow: 0 0 25px rgba(0, 150, 255, 0.15);
+        }
+
+        #taskInput {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #22222f;
+            background: #0d0d12;
+            color: #cfd7e6;
+            margin-bottom: 12px;
+        }
+
+        #taskInput:focus {
+            border-color: #5ca9ff;
+            box-shadow: 0 0 8px #5ca9ff55;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #0051ff, #00b7ff);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 15px rgba(0,140,255,0.45);
+        }
+
+        #taskList {
+            margin-top: 20px;
+        }
+
+        .taskRow {
+            background: #0f0f14;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #1e1e27;
+        }
+
+        .taskRow.completed {
+            opacity: 0.5;
+            text-decoration: line-through;
+        }
+
+        .deleteBtn {
+            background: #ff4c4c;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            color: white;
+            transition: 0.2s;
+        }
+
+        .deleteBtn:hover {
+            background: #ff2222;
+        }
+    </style>
+</head>
+<body>
+
+<h2>TO-DO MANAGER</h2>
+<div id="container">
+    <input type="text" id="taskInput" placeholder="Enter your task...">
+    <button onclick="addTask()">Add Task</button>
+
+    <div id="taskList"></div>
+</div>
+<script>
+let tasks = [];
+
+// Load saved tasks
+window.onload = function() {
+    let saved = localStorage.getItem("todo"); 
+    if (saved) {
+        tasks = JSON.parse(saved);
+        renderTasks();
+    }
+};
+
+function save() {
+    localStorage.setItem("todo", JSON.stringify(tasks));
+}
+
+function addTask() {
+    let input = document.getElementById("taskInput");
+    let text = input.value.trim();
+
+    if (text === "") return;
+
+    tasks.push({ text: text, completed: false });
+    input.value = "";
+    save();
+    renderTasks();
+}
+
+function toggleTask(index) {
+    tasks[index].completed = !tasks[index].completed;
+    save();
+    renderTasks();
+}
+
+function deleteTask(index) {
+    tasks.splice(index, 1);
+    save();
+    renderTasks();
+}
+function renderTasks() {
+    let list = document.getElementById("taskList");
+    list.innerHTML = "";
+    tasks.forEach((task, index) => {
+        list.innerHTML += `
+            <div class="taskRow ${task.completed ? 'completed' : ''}">
+                <div>
+                    <input type="checkbox" onclick="toggleTask(${index})" ${task.completed ? "checked" : ""}>
+                    ${task.text}
+                </div>
+                <button class="deleteBtn" onclick="deleteTask(${index})">X</button>
+            </div>
+        `;
+    });
+}
+</script>
+</body>
+</html>
