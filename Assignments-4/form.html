@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Form</title>
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #0d0d0f;
+            color: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 40px;
+            margin: 0;
+        }
+        h2 {
+            color: #5ca9ff;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            text-shadow: 0 0 10px #0044ff55;
+            animation: fadeIn 0.8s ease;
+        }
+        form {
+            background: #131318;
+            padding: 25px;
+            border-radius: 14px;
+            width: 320px;
+            box-shadow: 0 0 25px rgba(0, 150, 255, 0.15);
+            border: 1px solid #1f1f2d;
+            animation: slideIn 0.8s ease forwards;
+        }
+        label {
+            font-size: 14px;
+            color: #9ba4b4;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border-radius: 8px;
+            border: 1px solid #22222f;
+            background: #0d0d12;
+            color: #cfd7e6;
+            transition: 0.25s;
+            font-size: 14px;
+        }
+        input:focus {
+            border-color: #5ca9ff;
+            box-shadow: 0 0 8px #5ca9ff55;
+            outline: none;
+            transform: scale(1.02);
+        }
+        button {
+            margin-top: 18px;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #0051ff, #00b7ff);
+            color: white;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+            letter-spacing: 1px;
+        }
+        button:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 0 15px rgba(0,140,255,0.45);
+        }
+        #output {
+            margin-top: 28px;
+            padding: 20px;
+            background: #131318;
+            border-radius: 14px;
+            width: 320px;
+            border: 1px solid #1f1f2d;
+            box-shadow: 0 0 20px rgba(0,150,255,0.12);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: 0.6s ease;
+            color: #cfd7e6;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            0% { opacity: 0; transform: translateY(-15px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+<h2>STUDENT INFO</h2>
+<form onsubmit="showData(event)">
+    <label>Name</label>
+    <input type="text" id="name" required>
+    <br><br>
+    <label>Class</label>
+    <input type="text" id="class" required>
+    <br><br>
+    <label>Roll No</label>
+    <input type="number" id="roll" required>
+    <button type="submit">Submit</button>
+</form>
+<div id="output"></div>
+<script>
+function showData(e) {
+    e.preventDefault();
+    let name = document.getElementById("name").value;
+    let cls = document.getElementById("class").value;
+    let roll = document.getElementById("roll").value;
+
+    let out = document.getElementById("output");
+    out.innerHTML = `
+        <h3 style="margin-top:0; font-weight:600; color:#5ca9ff;">Student Details</h3>
+        <p><b>Name:</b> ${name}</p>
+        <p><b>Class:</b> ${cls}</p>
+        <p><b>Roll No:</b> ${roll}</p>
+    `;
+    out.style.opacity = 1;
+    out.style.transform = "translateY(0)";
+}
+</script>
+</body>
+</html>
